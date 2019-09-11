@@ -14,6 +14,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class VerifyUser
@@ -50,6 +51,8 @@ public class VerifyUser extends HttpServlet {
 					if(choice!=null){
 						
 						Cookie c1=new Cookie("id",userid);
+						HttpSession hs = request.getSession();
+						hs.setAttribute("username", userid);
 						Cookie c2=new Cookie("pw", password);
 						
 						c1.setMaxAge(60*60*24*7);
